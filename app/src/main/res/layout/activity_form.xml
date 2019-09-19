@@ -13,9 +13,8 @@
         <View style="@style/divider"/>
 
         <TextView
-                style="@style/header_title"
-                android:drawableStart="@drawable/gas_station_icon"
-                android:text="@string/header_gas_station"/>
+            style="@style/header_title"
+            android:text="@string/header_gas_station" />
 
         <View style="@style/divider"/>
 
@@ -47,9 +46,8 @@
         <View style="@style/divider"/>
 
         <TextView
-                android:drawableStart="@drawable/car_icon"
-                android:text="@string/header_average"
-                style="@style/header_title"/>
+            style="@style/header_title"
+            android:text="@string/header_average" />
 
         <View style="@style/divider"/>
 
