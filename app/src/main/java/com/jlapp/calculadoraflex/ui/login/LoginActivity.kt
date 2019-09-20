@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.iid.FirebaseInstanceId
 import com.jlapp.calculadoraflex.R
 import com.jlapp.calculadoraflex.ui.form.FormActivity
 import com.jlapp.calculadoraflex.ui.signup.SignUpActivity
+import com.jlapp.calculadoraflex.utils.DatabaseUtil
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -57,6 +59,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun goToHome() {
+        FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener(this) {
+                instanceIdResult ->
+            val newToken = instanceIdResult.token
+            DatabaseUtil.saveToken(newToken)
+        }
+
         val intent = Intent(this, FormActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
